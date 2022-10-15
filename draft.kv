@@ -1,0 +1,86 @@
+#:kivy 1.0
+<LoginScreen>:
+    GridLayout:
+        cols: 1
+        GridLayout:
+            cols: 1
+            Label: 
+                text: "User Login"
+            TextInput:
+                id: username
+                hint_text: "User Name"
+            TextInput: 
+                id: password
+                hint_text: "Password"
+            Button:
+                text: "Login" 
+                on_press: root.go_to_loginSuccess(root.ids.username.text, root.ids.password.text)
+            Label:
+                id: login_fail
+                text:""
+
+        GridLayout:
+            cols: 2
+            Button: 
+                text: "Forgot Password"
+            Button: 
+                text: "Signup"
+                on_press: root.signUp()
+
+<LoginSuccessScreen>:
+    GridLayout:
+        cols: 1
+        Button: 
+            text: "Logout"
+            on_press: root.log_out()
+        Label:
+            text: "How you feelin?"
+        TextInput:
+            id: expression
+            hint_text: "You can try: sad, happy, gray"
+        Button: 
+            text: "Comfort Me"
+            on_press: root.expression(root.ids.expression.text)
+        Label:
+            id: quote 
+            text: ""
+
+<SignUpScreen>:
+    GridLayout: 
+        cols: 1
+        Label: 
+            text: "Signup for Serotonin!"
+        TextInput:
+            id: username
+            hint_text: "New Username"
+        TextInput:
+            id: password
+            hint_text: "New Password"
+        Button: 
+            text: "Submit"
+            on_press: root.add_user(root.ids.username.text, root.ids.password.text)
+
+<SignUpSuccessScreen>:
+    GridLayout:
+        cols: 1
+        Label:
+            text: "Signup Success"
+        Button:
+            text: "login page"
+            on_press: root.go_to_login()
+
+<RootWidget>:
+    LoginScreen: 
+        name: "login_screen"
+    
+    SignUpScreen: 
+        name: "sign_up_screen"
+    
+    SignUpSuccessScreen:
+        name: "sign_up_success_screen"
+
+    LoginSuccessScreen:
+        name: "login_success_screen"
+    
+
+
