@@ -3,6 +3,9 @@ from kivy.lang import Builder
 from kivy.uix.screenmanager import ScreenManager, Screen
 import json, glob
 import random
+from kivy.uix.image import Image
+from kivy.uix.behaviors import ButtonBehavior
+from hoverable import HoverBehavior
 from pathlib import Path
 from datetime import datetime
 
@@ -65,6 +68,9 @@ class SignUpSuccessScreen(Screen):
         self.manager.current = "login_screen"
     
 class RootWidget(ScreenManager):
+    pass
+
+class ImageButton(ButtonBehavior, HoverBehavior, Image):
     pass
 
 class MainApp(App):

@@ -45,10 +45,16 @@
 
 <LoginSuccessScreen>:
     GridLayout:
+        padding: 40,40
+        spacing: 0,40
         cols: 1
-        Button: 
-            text: "Logout"
-            on_press: root.log_out()
+        RelativeLayout:
+            ImageButton: 
+                on_press: root.log_out()
+                source: 'logout_hover.png' if self.hovered else 'logout_nothover.png'
+                size_hint: 0.3, 0.5
+                pos_hint: {'center_x':0.8, 'center_y': 0.6}
+                 
         Label:
             text: "How you feelin?"
         TextInput:
@@ -79,7 +85,7 @@
             RelativeLayout:
                 Button:
                     text: "Signup"
-                    size_hint: 0.4, 0.7
+                    size_hint: 0.4, 0.8
                     pos_hint: {'center_x':0.5, 'center_y': 0.6}
                     on_press: root.add_user(root.ids.username.text, root.ids.password.text)
         GridLayout:
@@ -104,12 +110,12 @@
             cols: 1
             size_hint: 0.3, 0.3
 <RootWidget>:
+    LoginScreen: 
+        name: "login_screen"
+
     SignUpScreen: 
         name: "sign_up_screen"
 
-    LoginScreen: 
-        name: "login_screen"
-    
     SignUpSuccessScreen:
         name: "sign_up_success_screen"
 
