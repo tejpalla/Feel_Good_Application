@@ -64,33 +64,51 @@
 <SignUpScreen>:
     GridLayout: 
         cols: 1
-        Label: 
-            text: "Signup for Serotonin!"
-        TextInput:
-            id: username
-            hint_text: "New Username"
-        TextInput:
-            id: password
-            hint_text: "New Password"
-        Button: 
-            text: "Submit"
-            on_press: root.add_user(root.ids.username.text, root.ids.password.text)
+        GridLayout:
+            cols: 1
+            padding: 50, 50
+            spacing: 50, 50
+            Label: 
+                text: "Signup for Serotonin!"
+            TextInput:
+                id: username
+                hint_text: "New Username"
+            TextInput:
+                id: password
+                hint_text: "New Password"
+            RelativeLayout:
+                Button:
+                    text: "Signup"
+                    size_hint: 0.4, 0.7
+                    pos_hint: {'center_x':0.5, 'center_y': 0.6}
+                    on_press: root.add_user(root.ids.username.text, root.ids.password.text)
+        GridLayout:
+            
 
 <SignUpSuccessScreen>:
     GridLayout:
         cols: 1
-        Label:
-            text: "Signup Success"
-        Button:
-            text: "login page"
-            on_press: root.go_to_login()
-
+        GridLayout:
+            cols: 1
+            padding: 30, 30  
+            spacing: 0, 40
+            Label:
+                text: "Signup Success"
+            RelativeLayout:
+                Button:
+                    text: "Login"
+                    size_hint: 0.4, 0.2
+                    pos_hint: {'center_x':0.5, 'center_y': 0.6}
+                    on_press: root.go_to_login()
+        GridLayout:
+            cols: 1
+            size_hint: 0.3, 0.3
 <RootWidget>:
-    LoginScreen: 
-        name: "login_screen"
-    
     SignUpScreen: 
         name: "sign_up_screen"
+
+    LoginScreen: 
+        name: "login_screen"
     
     SignUpSuccessScreen:
         name: "sign_up_success_screen"
