@@ -52,7 +52,7 @@
             ImageButton: 
                 on_press: root.log_out()
                 source: 'logout_hover.png' if self.hovered else 'logout_nothover.png'
-                size_hint: 0.3, 0.5
+                size_hint: 0.25, 0.35
                 pos_hint: {'center_x':0.8, 'center_y': 0.6}
                  
         Label:
@@ -63,9 +63,13 @@
         Button: 
             text: "Comfort Me"
             on_press: root.expression(root.ids.expression.text)
-        Label:
-            id: quote 
-            text: ""
+        ScrollView: 
+            Label:
+                id: quote 
+                text: ""
+                text_size: self.width, None
+                size_hint_y: None
+                height: self.texture_size[1]
 
 <SignUpScreen>:
     GridLayout: 
